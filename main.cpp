@@ -10,10 +10,12 @@ int main() {
         std::cout << "1. Создать документ\n";
         std::cout << "2. Открыть документ\n";
         std::cout << "3. Сохранить документ\n";
-        std::cout << "4. Добавить примитив\n";
-        std::cout << "5. Удалить примитив\n";
-        std::cout << "6. Удалить документ\n";
-        std::cout << "7. Выход\n";
+        std::cout << "4. Импорт документа\n";
+        std::cout << "5. Экспорт документа\n";
+        std::cout << "6. Добавить примитив\n";
+        std::cout << "7. Удалить примитив\n";
+        std::cout << "8. Удалить документ\n";
+        std::cout << "9. Выход\n";
         std::cout << "Ваш выбор: ";
         std::cin >> choice;
 
@@ -37,6 +39,20 @@ int main() {
                 break;
             }
             case 4: {
+                std::cout << "Введите имя документа для имопрта: ";
+                std::string filename; 
+                std::cin >> filename;
+                controller.importDocument(filename);
+                break;
+            }
+            case 5: {
+                std::cout << "Введите имя документа для экспорта: ";
+                std::string filename; 
+                std::cin >> filename;
+                controller.exportDocument(filename);
+                break;
+            }
+            case 6: {
                 std::cout << "Введите имя документа для добавления примитива: ";
                 std::string filename;
                 std::cin >> filename;
@@ -48,7 +64,7 @@ int main() {
                 controller.addPrimitive(filename, type);
                 break;
             }
-            case 5: {
+            case 7: {
                 std::cout << "Введите имя документа для удаления примитива: ";
                 std::string filename;
                 std::cin >> filename;
@@ -64,14 +80,14 @@ int main() {
                 controller.removePrimitive(filename, primitiveName, primitiveType);
                 break;
             }
-            case 6: {
+            case 8: {
                 std::cout << "Введите имя документа для удаления: ";
                 std::string filename;
                 std::cin >> filename;
                 controller.removeDocument(filename);
                 break;
             }
-            case 7:
+            case 9:
                 return 0; // Exit the program
             default:
                 std::cout << "Неверный выбор. Пожалуйста, попробуйте снова.\n";

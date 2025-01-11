@@ -51,6 +51,10 @@ public:
         }
     }
 
+    const std::vector<std::shared_ptr<Primitive>>& getPrimitiveList() const {
+        return primitives;
+    }
+
 private: // Объявление приватной секции класса
     std::string name; // Имя документа (строка)
     std::vector<std::shared_ptr<Primitive>> primitives; // Вектор умных указателей на объекты Primitive, содержащий все примитивы документа

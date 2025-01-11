@@ -81,6 +81,8 @@
         "xstring": "cpp",
         "xtr1common": "cpp",
         "xutility": "cpp",
-        "xhash": "cpp"
+        "xhash": "cpp",
+        "text_encoding": "cpp",
+        "fstream": "cpp"
     }
 }

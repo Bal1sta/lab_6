@@ -48,6 +48,57 @@ public:
         }
     }
 
+    void importDocument(const std::string& name) {
+        // Проверяем, что текущий документ существует
+        if (documents.find(name) == documents.end()) {
+            std::cout << "Текущий документ не найден для импорта.\n";
+            return;
+        }
+
+        // Найти документ с указанным именем
+        auto it = documents.find(name);
+
+        if (it != documents.end()) {
+            auto currentDocIt = documents.find(name); // Найти текущий документ
+            if (currentDocIt != documents.end()) {
+                // Импортировать примитивы
+                for (const auto& primitive : it->second->getPrimitiveList()) {
+                    currentDocIt->second->addPrimitive(primitive);
+                }
+                std::cout << "Примитивы импортированы из документа: " << name << "\n";
+            } else {
+                std::cout << "Текущий документ не найден в хранилище.\n";
+            }
+        }
+
+    }
+
+    void exportDocument(const std::string& name) {
+        // Проверяем, что текущий документ существует
+        if (documents.find(name) == documents.end()) {
+            std::cout << "Текущий документ не найден для импорта.\n";
+            return;
+        }
+
+        // Найти документ с указанным именем
+        auto it = documents.find(name);
+
+        if (it != documents.end()) {
+            auto currentDocIt = documents.find(name); // Найти текущий документ
+            if (currentDocIt != documents.end()) {
+                // Экспортировать примитивы
+                for (const auto& primitive : currentDocIt->second->getPrimitiveList()) {
+                    it->second->addPrimitive(primitive);
+                }
+                std::cout << "Примитивы экспортированы в документ: " << name << "\n";
+            } else {
+                std::cout << "Текущий документ не найден в хранилище.\n";
+            }
+        }
+
+    }
+
+
     void addPrimitive(const std::string& filename, const std::string& type) { // Метод для добавления примитива в документ по имени файла и типу примитива
         auto it = documents.find(filename); // Поиск документа в хэш-таблице
         if (it != documents.end()) { // Если документ найден
